@@ -1,9 +1,5 @@
-﻿using EAppointment.Application.Abstractions.Repositories;
-using EAppointment.Domain.Entities;
+﻿using EAppointment.Domain.Entities;
 using EAppointment.Persistence.Contexts;
-using EAppointment.Persistence.Repositories.Appointments;
-using EAppointment.Persistence.Repositories.Doctors;
-using EAppointment.Persistence.Repositories.Patients;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +29,7 @@ namespace EAppointment.Persistence
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
             });
+
 
             //services.AddScoped<IQueryRepository<Doctor>, DoctorQueryRepository>();
             //services.AddScoped<ICommandRepository<Doctor>, DoctorCommandRepository>();
