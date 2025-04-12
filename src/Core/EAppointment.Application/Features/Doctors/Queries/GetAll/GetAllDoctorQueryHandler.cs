@@ -14,8 +14,8 @@ namespace EAppointment.Application.Features.Doctors.Queries.GetAll
     {
         public async ValueTask<Result<List<GetAllDoctorDTO>>> Handle(GetAllDoctorQueryRequest request, CancellationToken cancellationToken)
         {
-            List<GetAllDoctorDTO>? doctors = await _doctorQueryRepository.GetAll().OrderBy(d => d.Department).ThenBy(d => d.FirstName).ProjectToType<GetAllDoctorDTO>().ToListAsync(cancellationToken);
-            
+            List<GetAllDoctorDTO>? doctors = await _doctorQueryRepository.GetAll().Where(d => d.IsActive).OrderBy(d => d.Department).ThenBy(d => d.FirstName).ProjectToType<GetAllDoctorDTO>().ToListAsync(cancellationToken);
+
             return Result<List<GetAllDoctorDTO>>.Success(doctors);
         }
     }

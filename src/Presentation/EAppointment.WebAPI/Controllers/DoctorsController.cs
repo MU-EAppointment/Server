@@ -26,7 +26,7 @@ namespace EAppointment.WebAPI.Controllers
             return StatusCode((int)response.HttpStatusCode, response);
         }
 
-        [HttpDelete]
+        [HttpDelete("/api/[controller]/{id}")]
         public async Task<IActionResult> Delete([FromRoute] DeleteDoctorCommandRequest deleteDoctorCommandRequest, CancellationToken cancellationToken)
         {
             Result<string> response = await _mediator.Send(deleteDoctorCommandRequest, cancellationToken);
