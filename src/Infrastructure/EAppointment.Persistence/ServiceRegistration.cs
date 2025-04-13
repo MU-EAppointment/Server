@@ -11,7 +11,11 @@ namespace EAppointment.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration _configuration)
         {
-            services.AddDbContext<EAppointmentDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("SQL")));
+            services.AddDbContext<EAppointmentDbContext>(options =>
+            {
+                options.UseSqlServer(_configuration.GetConnectionString("SQL"));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
             services.AddIdentity<User, Role>(action =>
             {
                 action.Password.RequiredLength = 1;
